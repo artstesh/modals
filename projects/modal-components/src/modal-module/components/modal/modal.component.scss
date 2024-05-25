@@ -1,0 +1,66 @@
+
+
+.general-dialog-backdrop {
+
+}
+
+.general-dialog {
+
+  .mdc-dialog__surface {
+    padding: 24px !important;
+    font-family: Nunito, serif !important;
+    display: flex !important;
+
+    .mdc-dialog__actions {
+      padding: 0;
+    }
+  }
+
+  .mat-mdc-dialog-title {
+    flex: 0 1 30px;
+    //border-bottom: 1px solid $optimal-curve-color;
+    //color: $primary-color !important;
+    //font-size: $even-bigger-font-size !important;
+    font-family: Nunito, serif !important;
+    padding: 0 0 10px;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  .mat-mdc-dialog-content.mdc-dialog__content {
+    //font-size: $main-font-size;
+    //color: $black-color-1;
+    overflow: hidden;
+    padding: 20px 0 0 0;
+    max-height: unset;
+  }
+
+  .closer {
+    //font-size: $main-font-size;
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    margin-left: 10px;
+    //color: $muted-color-4;
+  }
+
+  .dialog-buttons {
+
+    button {
+      --button-width: 120px;
+      --button-height: 40px;
+
+      &.confirm-button {
+        //--button-back-color: var(--optimalCurve-color, $primary-color);
+        //@include buttons.common-button();
+      }
+
+      &.cancel-button {
+        //--button-theme-color: #{$primary-color};
+        //@include buttons.common-bordered-button();
+      }
+    }
+  }
+}

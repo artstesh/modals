@@ -1,0 +1,57 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "modal-components": {
+      "projectType": "library",
+      "root": "projects/modal-components",
+      "sourceRoot": "projects/modal-components/src",
+      "prefix": "art",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/modal-components/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/modal-components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/modal-components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/**/*.ts",
+              "projects/**/*.component.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular-builders/custom-webpack:karma",
+          "options": {
+            "main": "projects/modal-components/src/test.ts",
+            "tsConfig": "projects/modal-components/tsconfig.spec.json",
+            "karmaConfig": "projects/modal-components/karma.conf.js",
+            "codeCoverage": true,
+            "customWebpackConfig": {
+              "path": "./node_modules/@artstesh/forger/lib/webpack.config.js"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "modal-components"
+}

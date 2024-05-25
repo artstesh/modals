@@ -1,0 +1,18 @@
+<ng-template #modal>
+  <h1 mat-dialog-title>
+    <span>{{ _settings.title }}</span>
+    <span class="closer" [mat-dialog-close]="false">✖</span>
+  </h1>
+
+  <div mat-dialog-content>
+    <ng-content></ng-content>
+  </div>
+
+  <div class="dialog-buttons" *ngIf="_settings.showButtons" mat-dialog-actions>
+    <button [disabled]="!_settings.confirmAvailable" class="confirm-button"
+            (click)="close(true)">{{_settings.confirmTitle}}</button>
+    <button *ngIf="_settings.cancelVisible"
+            (click)="close(false)"
+            class="cancel-button" [mat-dialog-close]="false">{{_settings.cancelTitle}}</button>
+  </div>
+</ng-template>
