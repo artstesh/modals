@@ -6,15 +6,17 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {LanguagePipe} from './common/language.pipe';
 import {MatButtonModule} from "@angular/material/button";
 import {MessageRegistratorService} from "./services/message-registrator.service";
+import { ModalRootComponent } from './components/modal-root/modal-root.component';
 
 @NgModule({
   imports: [CommonModule, MatDialogModule, MatButtonModule, LanguagePipe],
   declarations: [
     DestructibleComponent,
-    ModalComponent
+    ModalComponent,
+    ModalRootComponent
   ],
   exports: [
-    ModalComponent, MatDialogModule
+    ModalComponent, MatDialogModule,ModalRootComponent
   ]
 })
 export class ArtModalModule {

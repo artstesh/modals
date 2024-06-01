@@ -3,7 +3,7 @@ export class IdGenerator {
 
   public static get(): string {
     let result: string[] = [];
-    for (let i = 0; i < 17; i++) {
+    for (let i = 0; i < 7; i++) {
       result.push(
         IdGenerator.collection
           .sort(() => 0.5 - Math.random())
