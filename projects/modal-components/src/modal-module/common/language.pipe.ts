@@ -1,7 +1,7 @@
 import {Injector, Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'artLanguage'
+  name: 'artLanguagePipe', pure: false, standalone: true
 })
 export class LanguagePipe implements PipeTransform {
 

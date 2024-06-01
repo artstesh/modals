@@ -10,6 +10,7 @@ export class MessageRegistratorService extends PostboyAbstractRegistrator {
     service: ModalPostboyService
   ) {
     super(service);
+    console.log('MessageRegistratorService')
     this.registerServices([]);
   }
 

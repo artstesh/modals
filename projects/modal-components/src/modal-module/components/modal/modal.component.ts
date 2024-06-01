@@ -6,6 +6,8 @@ import {ModalSettings} from "../../models";
 import {OpenModalCommand} from "../../messages";
 import {filter} from "rxjs/operators";
 import {CloseModalCommand} from "../../messages/commands/close-modal.command";
+import {LanguagePipe} from "../../common/language.pipe";
+import {MessageRegistratorService} from "../../services/message-registrator.service";
 
 const DialogPanelClass = 'art-modal-dialog'
 
@@ -13,7 +15,8 @@ const DialogPanelClass = 'art-modal-dialog'
   selector: 'art-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [MessageRegistratorService]
 })
 export class ModalComponent extends DestructibleComponent implements OnInit {
   @ViewChild('modal') private modalContent!: TemplateRef<ModalComponent>
@@ -27,9 +30,13 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
     this.detector.detectChanges();
   }
 
-  constructor(private postboy: ModalPostboyService, private modalService: MatDialog,
+  constructor(private postboy: ModalPostboyService,
+              private registrator: MessageRegistratorService,
+              private modalService: MatDialog,
               private detector: ChangeDetectorRef) {
     super();
+    registrator.up();
+    console.log('ModalComponent')
   }
 
   ngOnInit(): void {
@@ -53,5 +60,13 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
 
   close(result: boolean) : void {
     this.modalRef?.close(result);
+  }
+
+  translate(text: string): string {
+    return this._settings.translatePipe?.transform(text) ?? text;
+  }
+
+  onDestroy = () => {
+    this.registrator.down();
   }
 }
