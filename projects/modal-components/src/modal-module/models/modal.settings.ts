@@ -1,4 +1,5 @@
 import {IdGenerator} from "../common/id.generator";
+import {PipeTransform} from "@angular/core";
 
 export class ModalSettings {
   /**
@@ -59,6 +60,7 @@ export class ModalSettings {
    * Represents a function that is going to be called on the modal closing. It accepts a boolean parameter, `result`, which indicates the result of the modal close action.
    */
   onClose:(result: boolean)=> void = (r: boolean) => {};
+  translatePipe: PipeTransform | null = null;
 
   /**
    * Copies the given ModalSettings object

@@ -1,66 +1,74 @@
 
 
-.general-dialog-backdrop {
+.art-modal-dialog-backdrop {
 
 }
 
-.general-dialog {
+/*
+--am-dialog-padding
+--am-dialog-font-family
 
-  .mdc-dialog__surface {
-    padding: 24px !important;
-    font-family: Nunito, serif !important;
+--am-dialog-title-font-family
+--am-dialog-title-font-size
+--am-dialog-title-font-color
+--am-dialog-title-border-bottom
+--am-dialog-title-padding
+
+--am-dialog-closer-font-size
+--am-dialog-closer-color
+
+--am-dialog-content-padding
+
+--am-dialog-buttons-padding
+--am-dialog-buttons-gap
+--am-dialog-buttons-justify
+--am-dialog-buttons-direction
+
+
+ */
+
+.art-modal-dialog {
+
+  .mat-mdc-dialog-surface {
+    padding: var(--am-dialog-padding, 24px) !important;
+    font-family: var(--am-dialog-font-family, Nunito), serif !important;
     display: flex !important;
-
-    .mdc-dialog__actions {
-      padding: 0;
-    }
   }
 
-  .mat-mdc-dialog-title {
-    flex: 0 1 30px;
-    //border-bottom: 1px solid $optimal-curve-color;
-    //color: $primary-color !important;
-    //font-size: $even-bigger-font-size !important;
-    font-family: Nunito, serif !important;
-    padding: 0 0 10px;
+  .art-modal-dialog-title {
+    font-family: var(var(--am-dialog-title-font-family,--am-dialog-font-family, Nunito)), serif !important;
+    border-bottom: var(--am-dialog-title-border-bottom, 1px solid green);
+    font-size: var(--am-dialog-title-font-size, inherit) !important;
+    color: var(--am-dialog-title-font-color, inherit) !important;
+    padding: var(--am-dialog-title-padding, 0 0 10px 0) !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 
     &::before {
       content: none;
     }
-  }
 
-  .mat-mdc-dialog-content.mdc-dialog__content {
-    //font-size: $main-font-size;
-    //color: $black-color-1;
-    overflow: hidden;
-    padding: 20px 0 0 0;
-    max-height: unset;
-  }
-
-  .closer {
-    //font-size: $main-font-size;
-    width: inherit;
-    height: inherit;
-    cursor: pointer;
-    margin-left: 10px;
-    //color: $muted-color-4;
-  }
-
-  .dialog-buttons {
-
-    button {
-      --button-width: 120px;
-      --button-height: 40px;
-
-      &.confirm-button {
-        //--button-back-color: var(--optimalCurve-color, $primary-color);
-        //@include buttons.common-button();
-      }
-
-      &.cancel-button {
-        //--button-theme-color: #{$primary-color};
-        //@include buttons.common-bordered-button();
-      }
+    .closer {
+      font-size: var(--am-dialog-closer-font-size, 12px) !important;
+      cursor: pointer;
+      color: var(--am-dialog-closer-color, #bdbebe);
     }
+  }
+
+  .art-modal-dialog-content {
+    padding: var(--am-dialog-content-padding, 15px 0 0 0) !important;
+  }
+
+  .art-modal-dialog-buttons {
+    padding: var(--am-dialog-buttons-padding, 15px 0 0 0) !important;
+    min-height: unset !important;
+    gap: var(--am-dialog-buttons-gap, 10px) !important;
+    justify-content: var(--am-dialog-buttons-justify, end) !important;
+    flex-direction: var(--am-dialog-buttons-direction, row) !important;
   }
 }
