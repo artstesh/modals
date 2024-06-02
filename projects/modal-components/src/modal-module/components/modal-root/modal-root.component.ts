@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MessageRegistratorService} from "../../services/message-registrator.service";
 import {DestructibleComponent} from "../../common/destructible.component";
 

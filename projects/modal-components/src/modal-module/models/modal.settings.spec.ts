@@ -1,6 +1,8 @@
-import { Forger } from '@artstesh/forger';
-import { should } from '@artstesh/it-should';
+import {Forger} from '@artstesh/forger';
+import {should} from '@artstesh/it-should';
 import {ModalSettings} from "./modal.settings";
+import {PipeTransform} from "@angular/core";
+import {DialogPosition} from "@angular/material/dialog";
 
 describe('#models ModalSettings', () => {
   let model: ModalSettings;
@@ -81,31 +83,45 @@ describe('#models ModalSettings', () => {
     should().true(model.confirmAvailable === expected);
   });
 
-  it('setShowButtons()', () => {
-    const expected = Forger.create<boolean>()!;
+  it('setTranslatePipe()', () => {
+    const expected: PipeTransform = {transform(value: any, ...args): any {}};
     //
-    model = model.setShowButtons(expected);
+    model = model.setTranslatePipe(expected);
     //
-    should().true(model.showButtons === expected);
+    should().true(model.translatePipe === expected);
   });
 
-  it('setOnClose()', () => {
-    const expected = (r: boolean)=>{};
+  it('setPosition()', () => {
+    const expected = Forger.create<DialogPosition>()!;
     //
-    model = model.setOnClose(expected);
+    model = model.setPosition(expected);
     //
-    should().true(model.onClose === expected);
+    should().true(model.position === expected);
+  });
+
+  it('setDisableClose()', () => {
+    const expected = Forger.create<boolean>()!;
+    //
+    model = model.setDisableClose(expected);
+    //
+    should().true(model.disableClose === expected);
+  });
+
+  it('setHasBackdrop()', () => {
+    const expected = Forger.create<boolean>()!;
+    //
+    model = model.setHasBackdrop(expected);
+    //
+    should().true(model.hasBackdrop === expected);
   });
 
   describe('copy()', () => {
     it('success', () => {
       const other = ModalSettings.copy(model);
-      console.log(other);
-      console.log(model);
       //
       should()
         .objects(model, other)
-        .rule('onClose', (o1, o2) => o1 === o2)
+        .rule('translatePipe', (o1, o2) => o1 === o2)
         .equal();
     });
   });
@@ -173,16 +189,30 @@ describe('#models ModalSettings', () => {
       should().false(model.isSame(other));
     });
 
-    it('different showButtons', () => {
+    it('different translatePipe', () => {
       const other = ModalSettings.copy(model);
-      other.showButtons = !model.showButtons;
+      other.translatePipe = {transform(value: any, ...args): any {}};
       //
       should().false(model.isSame(other));
     });
 
-    it('different onClose', () => {
+    it('different translatePipe', () => {
       const other = ModalSettings.copy(model);
-      other.onClose = r => {};
+      other.position = Forger.create<DialogPosition>()!;
+      //
+      should().false(model.isSame(other));
+    });
+
+    it('different hasBackdrop', () => {
+      const other = ModalSettings.copy(model);
+      other.hasBackdrop = !model.hasBackdrop;
+      //
+      should().false(model.isSame(other));
+    });
+
+    it('different disableClose', () => {
+      const other = ModalSettings.copy(model);
+      other.disableClose = !model.disableClose;
       //
       should().false(model.isSame(other));
     });

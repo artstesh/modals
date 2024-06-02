@@ -3,8 +3,8 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {DestructibleComponent} from "../../common/destructible.component";
 import {ModalPostboyService} from "../../services/modal-postboy.service";
 import {ModalSettings} from "../../models";
-import {OpenModalCommand} from "../../messages";
-import {filter, tap} from "rxjs/operators";
+import {CloseAllModalsCommand, OpenModalCommand} from "../../messages";
+import {auditTime, filter} from "rxjs/operators";
 import {CloseModalCommand} from "../../messages/commands/close-modal.command";
 
 const DialogPanelClass = 'art-modal-dialog'
@@ -17,12 +17,12 @@ const DialogPanelClass = 'art-modal-dialog'
 })
 export class ModalComponent extends DestructibleComponent implements OnInit {
   @ViewChild('modal') private modalContent!: TemplateRef<ModalComponent>
-  private modalRef!: MatDialogRef<ModalComponent>;
+  private modalRef?: MatDialogRef<ModalComponent>;
+  command?: OpenModalCommand;
 
   _settings: ModalSettings = new ModalSettings();
 
   @Input() set settings(value: ModalSettings | undefined) {
-    console.log({own: this._settings, their: value})
     if (!value || this._settings.isSame(value)) return;
     this._settings = value;
     this.detector.detectChanges();
@@ -35,28 +35,38 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ModalComponent')
     this.subs.push(this.postboy.subscribe<OpenModalCommand>(OpenModalCommand.ID)
-      .pipe(tap(i => console.log(i, this._settings)),filter(cmd => cmd.modalId === this._settings.id))
-      .subscribe(cmd => this.open()));
-    this.subs.push(this.postboy.subscribe<CloseModalCommand>(OpenModalCommand.ID)
-      .pipe(filter(cmd => cmd.modalId !== this._settings.id))
-      .subscribe(cmd => this.close(false)));
+      .pipe(filter(cmd => cmd.modalId === this._settings.id), auditTime(100))
+      .subscribe(cmd => this.open(cmd)));
+    this.subs.push(this.postboy.subscribe<CloseModalCommand>(CloseModalCommand.ID)
+      .pipe(filter(cmd => cmd.modalId === this._settings.id))
+      .subscribe(() => this.close(false)));
+    this.subs.push(this.postboy.subscribe<CloseAllModalsCommand>(CloseAllModalsCommand.ID)
+      .subscribe(() => this.close(false)));
   }
 
-  open(): void {
+  open(cmd: OpenModalCommand): void {
+    this.close(false);
+    this.command = cmd;
     this.modalRef = this.modalService.open(this.modalContent,
       {
         backdropClass: this._settings.panelClass.length ? [`${this._settings.panelClass}-backdrop`, `${DialogPanelClass}-backdrop`] : `${DialogPanelClass}-backdrop`,
         panelClass: this._settings.panelClass.length ? [this._settings.panelClass, DialogPanelClass] : DialogPanelClass,
         autoFocus: false,
+        position: this._settings.position,
+        disableClose: this._settings.disableClose,
+        hasBackdrop: this._settings.hasBackdrop
       });
-    console.log({ref: this.modalRef});
-    this.modalRef.afterClosed().subscribe(res => !!this._settings.onClose && this._settings.onClose(res));
+    this.modalRef.afterClosed().subscribe(res => {
+      this.modalRef = undefined;
+      this.close(!!res);
+    });
   }
 
-  close(result: boolean) : void {
+  close(result: boolean): void {
     this.modalRef?.close(result);
+    this.command?.finish(result);
+    this.command = undefined;
   }
 
   translate(text: string): string {

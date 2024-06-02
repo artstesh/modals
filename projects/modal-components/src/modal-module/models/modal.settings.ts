@@ -1,5 +1,6 @@
 import {IdGenerator} from "../common/id.generator";
 import {PipeTransform} from "@angular/core";
+import {DialogPosition} from "@angular/material/dialog";
 
 export class ModalSettings {
   /**
@@ -52,15 +53,33 @@ export class ModalSettings {
    */
   panelClass: string = '';
   /**
-   * Indicates whether to show cancel and confirmation buttons.
-   * @type {boolean}
+   * Represents a pipe for translating the dialog title and buttons.
+   *
+   * @typedef {PipeTransform | null} translatePipe
    */
-  showButtons: boolean = true;
-  /**
-   * Represents a function that is going to be called on the modal closing. It accepts a boolean parameter, `result`, which indicates the result of the modal close action.
-   */
-  onClose:(result: boolean)=> void = (r: boolean) => {};
   translatePipe: PipeTransform | null = null;
+  /**
+   * Represents the position of a dialog.
+   *
+   * @typedef {object} DialogPosition
+   * @property {number} top - The top position of the dialog in pixels.
+   * @property {number} left - The left position of the dialog in pixels.
+   */
+  position: DialogPosition | undefined;
+  /**
+   * Indicates whether the close functionality is disabled.
+   *
+   * @type {boolean}
+   * @default false
+   */
+  disableClose: boolean = false;
+  /**
+   * Indicates whether a backdrop is present or not.
+   *
+   * @type {boolean}
+   * @default true
+   */
+  hasBackdrop: boolean = true;
 
   /**
    * Copies the given ModalSettings object
@@ -76,21 +95,17 @@ export class ModalSettings {
     result.confirmTitle = model.confirmTitle;
     result.cancelVisible = model.cancelVisible;
     result.confirmVisible = model.confirmVisible;
-    result.showButtons = model.showButtons;
     result.panelClass = model.panelClass;
     result.confirmAvailable = model.confirmAvailable;
-    result.onClose = model.onClose;
+    result.translatePipe = model.translatePipe;
+    result.position = model.position;
+    result.disableClose = model.disableClose;
+    result.hasBackdrop = model.hasBackdrop;
     return result;
   }
 
-  /**
-   * Sets a callback function to be executed when the modal is closed.
-   *
-   * @param {function} onClose - The callback function that will be called when the modal is closed. It accepts a boolean parameter, `result`, which indicates the result of the modal close action.
-   * @return {ModalSettings} - The updated ModalSettings object.
-   */
-  setOnClose(onClose: (result: boolean)=> void): ModalSettings {
-    return ModalSettings.copy({...this, onClose});
+  setTranslatePipe(translatePipe: PipeTransform | null): ModalSettings {
+    return ModalSettings.copy({...this, translatePipe});
   }
 
   /**
@@ -123,17 +138,6 @@ export class ModalSettings {
    */
   setPanelClass(panelClass: string): ModalSettings {
     return ModalSettings.copy({...this, panelClass});
-  }
-
-  /**
-   * Sets the showButtons property of the ModalSettings object.
-   *
-   * @param {boolean} showButtons - The boolean value indicating whether to show buttons or not.
-   *
-   * @return {ModalSettings} - The updated ModalSettings object with the showButtons property set.
-   */
-  setShowButtons(showButtons: boolean): ModalSettings {
-    return ModalSettings.copy({...this, showButtons});
   }
 
   /**
@@ -185,6 +189,32 @@ export class ModalSettings {
   setTitle(title: string): ModalSettings {
     return ModalSettings.copy({...this, title});
   }
+  /**
+   * Sets the position of the dialog within the modal settings.
+   *
+   * @param {DialogPosition | null} position - The position to set. Pass `null` to remove the position.
+   * @return {ModalSettings} - The updated modal settings object.
+   */
+  setPosition(position: DialogPosition | null): ModalSettings {
+    return ModalSettings.copy({...this, position});
+  }
+  /**
+   * Sets the value for disableClose property in the ModalSettings object.
+   * @param {boolean} disableClose - The new value for the disableClose property.
+   * @returns {ModalSettings} - A new ModalSettings object with the updated disableClose property.
+   */
+  setDisableClose(disableClose: boolean): ModalSettings {
+    return ModalSettings.copy({...this, disableClose});
+  }
+  /**
+   * Sets the value of `hasBackdrop` property in the `ModalSettings` object.
+   *
+   * @param {boolean} hasBackdrop - The new value for the `hasBackdrop` property.
+   * @return {ModalSettings} - The modified `ModalSettings` object with the updated `hasBackdrop` property.
+   */
+  setHasBackdrop(hasBackdrop: boolean): ModalSettings {
+    return ModalSettings.copy({...this, hasBackdrop});
+  }
 
   /**
    * Checks if the given ModalSettings object is identical to the current object.
@@ -199,10 +229,12 @@ export class ModalSettings {
     if (this.confirmTitle !== model.confirmTitle) return false;
     if (this.cancelVisible !== model.cancelVisible) return false;
     if (this.confirmVisible !== model.confirmVisible) return false;
-    if (this.showButtons !== model.showButtons) return false;
     if (this.panelClass !== model.panelClass) return false;
     if (this.confirmAvailable !== model.confirmAvailable) return false;
-    if (this.onClose !== model.onClose) return false;
+    if (this.translatePipe !== model.translatePipe) return false;
+    if (this.position !== model.position) return false;
+    if (this.disableClose !== model.disableClose) return false;
+    if (this.hasBackdrop !== model.hasBackdrop) return false;
     return true;
   }
 }
