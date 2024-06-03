@@ -1,8 +1,8 @@
-import {Forger} from '@artstesh/forger';
-import {should} from '@artstesh/it-should';
-import {ModalSettings} from "./modal.settings";
-import {PipeTransform} from "@angular/core";
-import {DialogPosition} from "@angular/material/dialog";
+import { Forger } from '@artstesh/forger';
+import { should } from '@artstesh/it-should';
+import { ModalSettings } from './modal.settings';
+import { PipeTransform } from '@angular/core';
+import { DialogPosition } from '@angular/material/dialog';
 
 describe('#models ModalSettings', () => {
   let model: ModalSettings;
@@ -84,7 +84,7 @@ describe('#models ModalSettings', () => {
   });
 
   it('setTranslatePipe()', () => {
-    const expected: PipeTransform = {transform(value: any, ...args): any {}};
+    const expected: PipeTransform = { transform(value: any, ...args): any {} };
     //
     model = model.setTranslatePipe(expected);
     //
@@ -191,7 +191,7 @@ describe('#models ModalSettings', () => {
 
     it('different translatePipe', () => {
       const other = ModalSettings.copy(model);
-      other.translatePipe = {transform(value: any, ...args): any {}};
+      other.translatePipe = { transform(value: any, ...args): any {} };
       //
       should().false(model.isSame(other));
     });
