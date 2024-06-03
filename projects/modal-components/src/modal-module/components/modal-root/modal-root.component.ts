@@ -4,8 +4,8 @@ import {DestructibleComponent} from "../../common/destructible.component";
 
 @Component({
   selector: 'art-modal-root',
-  templateUrl: './modal-root.component.html',
-  styleUrls: ['./modal-root.component.scss'],
+  template: '',
+  styleUrls: [],
   providers: [MessageRegistratorService]
 })
 export class ModalRootComponent extends DestructibleComponent{
