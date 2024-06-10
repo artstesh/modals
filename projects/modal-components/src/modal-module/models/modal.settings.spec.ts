@@ -90,12 +90,20 @@ describe('#models ModalSettings', () => {
     should().true(model.translatePipe === expected);
   });
 
-  it('setDisableClose()', () => {
+  it('setDiaphanous()', () => {
     const expected = Forger.create<boolean>()!;
     //
-    model = model.setDisableClose(expected);
+    model = model.setDiaphanous(expected);
     //
-    should().true(model.disableClose === expected);
+    should().true(model.diaphanous === expected);
+  });
+
+  it('setBackdropCloser()', () => {
+    const expected = Forger.create<boolean>()!;
+    //
+    model = model.setBackdropCloser(expected);
+    //
+    should().true(model.backdropCloser === expected);
   });
 
   it('setHasBackdrop()', () => {
@@ -187,6 +195,13 @@ describe('#models ModalSettings', () => {
       should().false(model.isSame(other));
     });
 
+    it('different diaphanous', () => {
+      const other = ModalSettings.copy(model);
+      other.diaphanous = !model.diaphanous;
+      //
+      should().false(model.isSame(other));
+    });
+
     it('different hasBackdrop', () => {
       const other = ModalSettings.copy(model);
       other.hasBackdrop = !model.hasBackdrop;
@@ -194,9 +209,9 @@ describe('#models ModalSettings', () => {
       should().false(model.isSame(other));
     });
 
-    it('different disableClose', () => {
+    it('different backdropCloser', () => {
       const other = ModalSettings.copy(model);
-      other.disableClose = !model.disableClose;
+      other.backdropCloser = !model.backdropCloser;
       //
       should().false(model.isSame(other));
     });

@@ -58,12 +58,18 @@ export class ModalSettings {
    */
   translatePipe: PipeTransform | null = null;
   /**
-   * Indicates whether the close functionality is disabled.
+   * Defines whether the backdrop of the window is transparent for click events.
+   *
+   * @type {boolean}
+   */
+  diaphanous: boolean = false;
+  /**
+   * Defines whether the window should be closed on the backdrop click.
    *
    * @type {boolean}
    * @default false
    */
-  disableClose: boolean = false;
+  backdropCloser: boolean = true;
   /**
    * Indicates whether a backdrop is present or not.
    *
@@ -89,7 +95,8 @@ export class ModalSettings {
     result.panelClass = model.panelClass;
     result.confirmAvailable = model.confirmAvailable;
     result.translatePipe = model.translatePipe;
-    result.disableClose = model.disableClose;
+    result.diaphanous = model.diaphanous;
+    result.backdropCloser = model.backdropCloser;
     result.hasBackdrop = model.hasBackdrop;
     return result;
   }
@@ -180,12 +187,21 @@ export class ModalSettings {
     return ModalSettings.copy({...this, title});
   }
   /**
-   * Sets the value for disableClose property in the ModalSettings object.
-   * @param {boolean} disableClose - The new value for the disableClose property.
-   * @returns {ModalSettings} - A new ModalSettings object with the updated disableClose property.
+   Sets the value of `diaphanous` property in the `ModalSettings` object.
+   *
+   * @param {boolean} diaphanous - The new value for the backdropCloser property.
+   * @return {ModalSettings} - The updated modal settings object.
    */
-  setDisableClose(disableClose: boolean): ModalSettings {
-    return ModalSettings.copy({...this, disableClose});
+  setDiaphanous(diaphanous: boolean): ModalSettings {
+    return ModalSettings.copy({...this, diaphanous});
+  }
+  /**
+   * Sets the value of `backdropCloser` property in the `ModalSettings` object.
+   * @param {boolean} backdropCloser - The new value for the backdropCloser property.
+   * @returns {ModalSettings} - A new ModalSettings object with the updated backdropCloser property.
+   */
+  setBackdropCloser(backdropCloser: boolean): ModalSettings {
+    return ModalSettings.copy({...this, backdropCloser: backdropCloser});
   }
   /**
    * Sets the value of `hasBackdrop` property in the `ModalSettings` object.
@@ -213,7 +229,8 @@ export class ModalSettings {
     if (this.panelClass !== model.panelClass) return false;
     if (this.confirmAvailable !== model.confirmAvailable) return false;
     if (this.translatePipe !== model.translatePipe) return false;
-    if (this.disableClose !== model.disableClose) return false;
+    if (this.diaphanous !== model.diaphanous) return false;
+    if (this.backdropCloser !== model.backdropCloser) return false;
     if (this.hasBackdrop !== model.hasBackdrop) return false;
     return true;
   }
