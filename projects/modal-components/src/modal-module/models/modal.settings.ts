@@ -1,6 +1,5 @@
-import { IdGenerator } from '../common/id.generator';
-import { PipeTransform } from '@angular/core';
-import { DialogPosition } from '@angular/material/dialog';
+import {IdGenerator} from "../common/id.generator";
+import {PipeTransform} from "@angular/core";
 
 export class ModalSettings {
   /**
@@ -59,20 +58,18 @@ export class ModalSettings {
    */
   translatePipe: PipeTransform | null = null;
   /**
-   * Represents the position of a dialog.
+   * Defines whether the backdrop of the window is transparent for click events.
    *
-   * @typedef {object} DialogPosition
-   * @property {number} top - The top position of the dialog in pixels.
-   * @property {number} left - The left position of the dialog in pixels.
+   * @type {boolean}
    */
-  position: DialogPosition | undefined;
+  diaphanous: boolean = false;
   /**
-   * Indicates whether the close functionality is disabled.
+   * Defines whether the window should be closed on the backdrop click.
    *
    * @type {boolean}
    * @default false
    */
-  disableClose: boolean = false;
+  backdropCloser: boolean = true;
   /**
    * Indicates whether a backdrop is present or not.
    *
@@ -98,14 +95,14 @@ export class ModalSettings {
     result.panelClass = model.panelClass;
     result.confirmAvailable = model.confirmAvailable;
     result.translatePipe = model.translatePipe;
-    result.position = model.position;
-    result.disableClose = model.disableClose;
+    result.diaphanous = model.diaphanous;
+    result.backdropCloser = model.backdropCloser;
     result.hasBackdrop = model.hasBackdrop;
     return result;
   }
 
   setTranslatePipe(translatePipe: PipeTransform | null): ModalSettings {
-    return ModalSettings.copy({ ...this, translatePipe });
+    return ModalSettings.copy({...this, translatePipe});
   }
 
   /**
@@ -115,7 +112,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated ModalSettings object.
    */
   setId(id: string): ModalSettings {
-    return ModalSettings.copy({ ...this, id });
+    return ModalSettings.copy({...this, id});
   }
 
   /**
@@ -126,7 +123,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - The updated modal settings.
    */
   setConfirmAvailable(confirmAvailable: boolean): ModalSettings {
-    return ModalSettings.copy({ ...this, confirmAvailable });
+    return ModalSettings.copy({...this, confirmAvailable});
   }
 
   /**
@@ -137,7 +134,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated modal settings object.
    */
   setPanelClass(panelClass: string): ModalSettings {
-    return ModalSettings.copy({ ...this, panelClass });
+    return ModalSettings.copy({...this, panelClass});
   }
 
   /**
@@ -147,7 +144,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - A new ModalSettings object with the updated confirmVisible value.
    */
   setConfirmVisible(confirmVisible: boolean): ModalSettings {
-    return ModalSettings.copy({ ...this, confirmVisible });
+    return ModalSettings.copy({...this, confirmVisible});
   }
 
   /**
@@ -157,7 +154,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The modified modal settings object.
    */
   setCancelVisible(cancelVisible: boolean): ModalSettings {
-    return ModalSettings.copy({ ...this, cancelVisible });
+    return ModalSettings.copy({...this, cancelVisible});
   }
 
   /**
@@ -167,7 +164,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated ModalSettings object.
    */
   setConfirmTitle(confirmTitle: string): ModalSettings {
-    return ModalSettings.copy({ ...this, confirmTitle });
+    return ModalSettings.copy({...this, confirmTitle});
   }
 
   /**
@@ -177,7 +174,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - The updated modal settings object.
    */
   setCancelTitle(cancelTitle: string): ModalSettings {
-    return ModalSettings.copy({ ...this, cancelTitle });
+    return ModalSettings.copy({...this, cancelTitle});
   }
 
   /**
@@ -187,24 +184,24 @@ export class ModalSettings {
    * @return {ModalSettings} - A new instance of ModalSettings with the updated title.
    */
   setTitle(title: string): ModalSettings {
-    return ModalSettings.copy({ ...this, title });
+    return ModalSettings.copy({...this, title});
   }
   /**
-   * Sets the position of the dialog within the modal settings.
+   Sets the value of `diaphanous` property in the `ModalSettings` object.
    *
-   * @param {DialogPosition | null} position - The position to set. Pass `null` to remove the position.
+   * @param {boolean} diaphanous - The new value for the backdropCloser property.
    * @return {ModalSettings} - The updated modal settings object.
    */
-  setPosition(position: DialogPosition | null): ModalSettings {
-    return ModalSettings.copy({ ...this, position });
+  setDiaphanous(diaphanous: boolean): ModalSettings {
+    return ModalSettings.copy({...this, diaphanous});
   }
   /**
-   * Sets the value for disableClose property in the ModalSettings object.
-   * @param {boolean} disableClose - The new value for the disableClose property.
-   * @returns {ModalSettings} - A new ModalSettings object with the updated disableClose property.
+   * Sets the value of `backdropCloser` property in the `ModalSettings` object.
+   * @param {boolean} backdropCloser - The new value for the backdropCloser property.
+   * @returns {ModalSettings} - A new ModalSettings object with the updated backdropCloser property.
    */
-  setDisableClose(disableClose: boolean): ModalSettings {
-    return ModalSettings.copy({ ...this, disableClose });
+  setBackdropCloser(backdropCloser: boolean): ModalSettings {
+    return ModalSettings.copy({...this, backdropCloser: backdropCloser});
   }
   /**
    * Sets the value of `hasBackdrop` property in the `ModalSettings` object.
@@ -213,7 +210,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The modified `ModalSettings` object with the updated `hasBackdrop` property.
    */
   setHasBackdrop(hasBackdrop: boolean): ModalSettings {
-    return ModalSettings.copy({ ...this, hasBackdrop });
+    return ModalSettings.copy({...this, hasBackdrop});
   }
 
   /**
@@ -232,8 +229,8 @@ export class ModalSettings {
     if (this.panelClass !== model.panelClass) return false;
     if (this.confirmAvailable !== model.confirmAvailable) return false;
     if (this.translatePipe !== model.translatePipe) return false;
-    if (this.position !== model.position) return false;
-    if (this.disableClose !== model.disableClose) return false;
+    if (this.diaphanous !== model.diaphanous) return false;
+    if (this.backdropCloser !== model.backdropCloser) return false;
     if (this.hasBackdrop !== model.hasBackdrop) return false;
     return true;
   }

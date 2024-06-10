@@ -1,8 +1,7 @@
-import { Forger } from '@artstesh/forger';
-import { should } from '@artstesh/it-should';
-import { ModalSettings } from './modal.settings';
-import { PipeTransform } from '@angular/core';
-import { DialogPosition } from '@angular/material/dialog';
+import {Forger} from '@artstesh/forger';
+import {should} from '@artstesh/it-should';
+import {ModalSettings} from "./modal.settings";
+import {PipeTransform} from "@angular/core";
 
 describe('#models ModalSettings', () => {
   let model: ModalSettings;
@@ -84,27 +83,27 @@ describe('#models ModalSettings', () => {
   });
 
   it('setTranslatePipe()', () => {
-    const expected: PipeTransform = { transform(value: any, ...args): any {} };
+    const expected: PipeTransform = {transform(value: any, ...args): any {}};
     //
     model = model.setTranslatePipe(expected);
     //
     should().true(model.translatePipe === expected);
   });
 
-  it('setPosition()', () => {
-    const expected = Forger.create<DialogPosition>()!;
-    //
-    model = model.setPosition(expected);
-    //
-    should().true(model.position === expected);
-  });
-
-  it('setDisableClose()', () => {
+  it('setDiaphanous()', () => {
     const expected = Forger.create<boolean>()!;
     //
-    model = model.setDisableClose(expected);
+    model = model.setDiaphanous(expected);
     //
-    should().true(model.disableClose === expected);
+    should().true(model.diaphanous === expected);
+  });
+
+  it('setBackdropCloser()', () => {
+    const expected = Forger.create<boolean>()!;
+    //
+    model = model.setBackdropCloser(expected);
+    //
+    should().true(model.backdropCloser === expected);
   });
 
   it('setHasBackdrop()', () => {
@@ -191,14 +190,14 @@ describe('#models ModalSettings', () => {
 
     it('different translatePipe', () => {
       const other = ModalSettings.copy(model);
-      other.translatePipe = { transform(value: any, ...args): any {} };
+      other.translatePipe = {transform(value: any, ...args): any {}};
       //
       should().false(model.isSame(other));
     });
 
-    it('different translatePipe', () => {
+    it('different diaphanous', () => {
       const other = ModalSettings.copy(model);
-      other.position = Forger.create<DialogPosition>()!;
+      other.diaphanous = !model.diaphanous;
       //
       should().false(model.isSame(other));
     });
@@ -210,9 +209,9 @@ describe('#models ModalSettings', () => {
       should().false(model.isSame(other));
     });
 
-    it('different disableClose', () => {
+    it('different backdropCloser', () => {
       const other = ModalSettings.copy(model);
-      other.disableClose = !model.disableClose;
+      other.backdropCloser = !model.backdropCloser;
       //
       should().false(model.isSame(other));
     });

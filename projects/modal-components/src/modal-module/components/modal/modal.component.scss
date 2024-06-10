@@ -1,14 +1,16 @@
-
-
-.art-modal-dialog-backdrop {
-
-}
-
 /*
+--am-dialog-justify
+--am-dialog-align
 --am-dialog-padding
 --am-dialog-font-family
+--am-dialog-background
+--am-dialog-width
+--am-dialog-wrapper-padding
+--am-dialog-border-radius
 
---am-dialog-title-font-family
+--am-backdrop-opacity
+--am-backdrop-color
+
 --am-dialog-title-font-size
 --am-dialog-title-font-color
 --am-dialog-title-border-bottom
@@ -23,52 +25,115 @@
 --am-dialog-buttons-gap
 --am-dialog-buttons-justify
 --am-dialog-buttons-direction
-
-
+--am-dialog-button-height
+--am-dialog-button-padding
+--am-dialog-button-border-radius
+--am-dialog-confirm-button-background-color
+--am-dialog-confirm-button-border
+--am-dialog-confirm-button-color
+--am-dialog-cancel-button-background-color
+--am-dialog-cancel-button-border
+--am-dialog-cancel-button-color
+--am-dialog-button-font-size
  */
+.art-modal-dialog-wrapper {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  justify-content: var(--am-dialog-justify, center);
+  align-items: var(--am-dialog-align, center);
+  height: 100%;
+  width: 100%;
+  display: flex;
 
-.art-modal-dialog {
-
-  .mat-mdc-dialog-surface {
-    padding: var(--am-dialog-padding, 24px) !important;
-    font-family: var(--am-dialog-font-family, Nunito), serif !important;
-    display: flex !important;
+  &.diaphanous {
+    pointer-events: none;
   }
 
-  .art-modal-dialog-title {
-    font-family: var(var(--am-dialog-title-font-family,--am-dialog-font-family, Nunito)), serif !important;
-    border-bottom: var(--am-dialog-title-border-bottom, 1px solid green);
-    font-size: var(--am-dialog-title-font-size, inherit) !important;
-    color: var(--am-dialog-title-font-color, inherit) !important;
-    padding: var(--am-dialog-title-padding, 0 0 10px 0) !important;
-    line-height: normal !important;
-    letter-spacing: normal !important;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+  .art-modal-dialog-backdrop {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    opacity: var(--am-backdrop-opacity, .6);
+    background-color: var(--am-backdrop-color, #fff);
+    height: 100%;
+    width: 100%;
+  }
 
-    &::before {
-      content: none;
+  .art-modal-dialog-content-wrapper {
+    padding: var(--am-dialog-wrapper-padding, 0);
+    z-index: 10;
+
+    .art-modal-dialog {
+      background-color: var(--am-dialog-background, #fff);
+      padding: var(--am-dialog-padding, 24px) !important;
+      font-family: var(--am-dialog-font-family, Arial), serif !important;
+      display: flex;
+      flex-direction: column;
+      width: var(--am-dialog-width, fit-content);
+      max-width: var(--am-dialog-width, fit-content);
+      border-radius: var(--am-dialog-border-radius, 8px);
+      pointer-events: all;
+
+      .art-modal-dialog-title {
+        border-bottom: var(--am-dialog-title-border-bottom, 1px solid green);
+        font-size: var(--am-dialog-title-font-size, inherit) !important;
+        color: var(--am-dialog-title-font-color, inherit) !important;
+        padding: var(--am-dialog-title-padding, 0 0 10px 0) !important;
+        line-height: normal !important;
+        letter-spacing: normal !important;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        &::before {
+          content: none;
+        }
+
+        .closer {
+          font-size: var(--am-dialog-closer-font-size, 12px) !important;
+          cursor: pointer;
+          color: var(--am-dialog-closer-color, #bdbebe);
+        }
+      }
+
+      .art-modal-dialog-content {
+        padding: var(--am-dialog-content-padding, 15px 0 0 0) !important;
+      }
+
+      .art-modal-dialog-buttons {
+        display: flex;
+        padding: var(--am-dialog-buttons-padding, 15px 0 0 0) !important;
+        min-height: unset !important;
+        gap: var(--am-dialog-buttons-gap, 10px) !important;
+        justify-content: var(--am-dialog-buttons-justify, end) !important;
+        flex-direction: var(--am-dialog-buttons-direction, row) !important;
+
+        button {
+          height: var(--am-dialog-button-height, 30px);
+          padding: var(--am-dialog-button-padding, 0 10px);
+          border-radius: var(--am-dialog-button-border-radius, 3px);
+          font-size: var(--am-dialog-button-font-size, 13px);
+
+          &.confirm-button {
+            background-color:  var(--am-dialog-confirm-button-background-color, var(--am-dialog-button-background-color, white));
+            border: var(--am-dialog-confirm-button-border, var(--am-dialog-button-border, 1px solid green));
+            color: var(--am-dialog-confirm-button-color, var(--am-dialog-button-color, green));
+          }
+
+          &.cancel-button {
+            background-color: var(--am-dialog-cancel-button-background-color, var(--am-dialog-button-background-color, white));
+            border: var(--am-dialog-cancel-button-border, var(--am-dialog-button-border, 1px solid green));
+            color: var(--am-dialog-cancel-button-color, var(--am-dialog-button-color, green));
+          }
+        }
+      }
     }
-
-    .closer {
-      font-size: var(--am-dialog-closer-font-size, 12px) !important;
-      cursor: pointer;
-      color: var(--am-dialog-closer-color, #bdbebe);
-    }
-  }
-
-  .art-modal-dialog-content {
-    padding: var(--am-dialog-content-padding, 15px 0 0 0) !important;
-  }
-
-  .art-modal-dialog-buttons {
-    padding: var(--am-dialog-buttons-padding, 15px 0 0 0) !important;
-    min-height: unset !important;
-    gap: var(--am-dialog-buttons-gap, 10px) !important;
-    justify-content: var(--am-dialog-buttons-justify, end) !important;
-    flex-direction: var(--am-dialog-buttons-direction, row) !important;
   }
 }
+
+
