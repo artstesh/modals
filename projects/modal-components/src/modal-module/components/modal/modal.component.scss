@@ -10,7 +10,6 @@
 --am-backdrop-opacity
 --am-backdrop-color
 
---am-dialog-title-font-family
 --am-dialog-title-font-size
 --am-dialog-title-font-color
 --am-dialog-title-border-bottom
@@ -25,6 +24,16 @@
 --am-dialog-buttons-gap
 --am-dialog-buttons-justify
 --am-dialog-buttons-direction
+--am-dialog-button-height
+--am-dialog-button-padding
+--am-dialog-button-border-radius
+--am-dialog-confirm-button-background-color
+--am-dialog-confirm-button-border
+--am-dialog-confirm-button-color
+--am-dialog-cancel-button-background-color
+--am-dialog-cancel-button-border
+--am-dialog-cancel-button-color
+--am-dialog-button-font-size
  */
 .art-modal-dialog-wrapper {
   position: fixed;
@@ -62,7 +71,6 @@
       max-width: var(--am-dialog-width, fit-content);
 
       .art-modal-dialog-title {
-        font-family: var(var(--am-dialog-title-font-family,--am-dialog-font-family, Nunito)), serif !important;
         border-bottom: var(--am-dialog-title-border-bottom, 1px solid green);
         font-size: var(--am-dialog-title-font-size, inherit) !important;
         color: var(--am-dialog-title-font-color, inherit) !important;
@@ -97,6 +105,25 @@
         gap: var(--am-dialog-buttons-gap, 10px) !important;
         justify-content: var(--am-dialog-buttons-justify, end) !important;
         flex-direction: var(--am-dialog-buttons-direction, row) !important;
+
+        button {
+          height: var(--am-dialog-button-height, 30px);
+          padding: var(--am-dialog-button-padding, 0 10px);
+          border-radius: var(--am-dialog-button-border-radius, 3px);
+          font-size: var(--am-dialog-button-font-size, 13px);
+
+          &.confirm-button {
+            background-color:  var(--am-dialog-confirm-button-background-color, var(--am-dialog-button-background-color, white));
+            border: var(--am-dialog-confirm-button-border, var(--am-dialog-button-border, 1px solid green));
+            color: var(--am-dialog-confirm-button-color, var(--am-dialog-button-color, green));
+          }
+
+          &.cancel-button {
+            background-color: var(--am-dialog-cancel-button-background-color, var(--am-dialog-button-background-color, white));
+            border: var(--am-dialog-cancel-button-border, var(--am-dialog-button-border, 1px solid green));
+            color: var(--am-dialog-cancel-button-color, var(--am-dialog-button-color, green));
+          }
+        }
       }
     }
   }
