@@ -2,7 +2,6 @@ import {Forger} from '@artstesh/forger';
 import {should} from '@artstesh/it-should';
 import {ModalSettings} from "./modal.settings";
 import {PipeTransform} from "@angular/core";
-import {DialogPosition} from "@angular/material/dialog";
 
 describe('#models ModalSettings', () => {
   let model: ModalSettings;
@@ -89,14 +88,6 @@ describe('#models ModalSettings', () => {
     model = model.setTranslatePipe(expected);
     //
     should().true(model.translatePipe === expected);
-  });
-
-  it('setPosition()', () => {
-    const expected = Forger.create<DialogPosition>()!;
-    //
-    model = model.setPosition(expected);
-    //
-    should().true(model.position === expected);
   });
 
   it('setDisableClose()', () => {
@@ -192,13 +183,6 @@ describe('#models ModalSettings', () => {
     it('different translatePipe', () => {
       const other = ModalSettings.copy(model);
       other.translatePipe = {transform(value: any, ...args): any {}};
-      //
-      should().false(model.isSame(other));
-    });
-
-    it('different translatePipe', () => {
-      const other = ModalSettings.copy(model);
-      other.position = Forger.create<DialogPosition>()!;
       //
       should().false(model.isSame(other));
     });

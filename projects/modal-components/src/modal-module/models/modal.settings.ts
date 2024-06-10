@@ -1,6 +1,5 @@
 import {IdGenerator} from "../common/id.generator";
 import {PipeTransform} from "@angular/core";
-import {DialogPosition} from "@angular/material/dialog";
 
 export class ModalSettings {
   /**
@@ -59,14 +58,6 @@ export class ModalSettings {
    */
   translatePipe: PipeTransform | null = null;
   /**
-   * Represents the position of a dialog.
-   *
-   * @typedef {object} DialogPosition
-   * @property {number} top - The top position of the dialog in pixels.
-   * @property {number} left - The left position of the dialog in pixels.
-   */
-  position: DialogPosition | undefined;
-  /**
    * Indicates whether the close functionality is disabled.
    *
    * @type {boolean}
@@ -98,7 +89,6 @@ export class ModalSettings {
     result.panelClass = model.panelClass;
     result.confirmAvailable = model.confirmAvailable;
     result.translatePipe = model.translatePipe;
-    result.position = model.position;
     result.disableClose = model.disableClose;
     result.hasBackdrop = model.hasBackdrop;
     return result;
@@ -190,15 +180,6 @@ export class ModalSettings {
     return ModalSettings.copy({...this, title});
   }
   /**
-   * Sets the position of the dialog within the modal settings.
-   *
-   * @param {DialogPosition | null} position - The position to set. Pass `null` to remove the position.
-   * @return {ModalSettings} - The updated modal settings object.
-   */
-  setPosition(position: DialogPosition | null): ModalSettings {
-    return ModalSettings.copy({...this, position});
-  }
-  /**
    * Sets the value for disableClose property in the ModalSettings object.
    * @param {boolean} disableClose - The new value for the disableClose property.
    * @returns {ModalSettings} - A new ModalSettings object with the updated disableClose property.
@@ -232,7 +213,6 @@ export class ModalSettings {
     if (this.panelClass !== model.panelClass) return false;
     if (this.confirmAvailable !== model.confirmAvailable) return false;
     if (this.translatePipe !== model.translatePipe) return false;
-    if (this.position !== model.position) return false;
     if (this.disableClose !== model.disableClose) return false;
     if (this.hasBackdrop !== model.hasBackdrop) return false;
     return true;

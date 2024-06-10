@@ -1,21 +1,26 @@
-<ng-template #modal>
-  <div mat-dialog-title class="art-modal-dialog-title">
-    <div>{{ translate(_settings.title) }}</div>
-    <div class="closer" (click)="close(false)">✖</div>
+<div *ngIf="visible" class="art-modal-dialog-wrapper">
+  <div [class]="backdropClass" *ngIf="_settings.hasBackdrop" (click)="!_settings.disableClose && close(false)">
   </div>
+  <div class="art-modal-dialog-content-wrapper">
+    <div [class]="panelClass">
+      <div class="art-modal-dialog-title">
+        <div>{{ _settings.title }}</div>
+        <div class="closer" (click)="close(false)">✖</div>
+      </div>
 
-  <div mat-dialog-content class="art-modal-dialog-content">
-    <ng-content></ng-content>
-  </div>
+      <div class="art-modal-dialog-content">
+        <ng-content></ng-content>
+      </div>
 
-  <div class="art-modal-dialog-buttons" mat-dialog-actions>
-    <button [disabled]="!_settings.confirmAvailable" class="confirm-button" mat-button
-            (click)="close(true)">{{ translate(_settings.confirmTitle) }}
-    </button>
-    <button *ngIf="_settings.cancelVisible" mat-button
-            (click)="close(false)"
-            class="cancel-button">{{ translate(_settings.cancelTitle) }}
-    </button>
+      <div class="art-modal-dialog-buttons">
+        <button [disabled]="!_settings.confirmAvailable" class="confirm-button"
+                (click)="close(true)">{{ _settings.confirmTitle }}
+        </button>
+        <button *ngIf="_settings.cancelVisible"
+                class="cancel-button" (click)="close(false)">{{ _settings.cancelTitle }}
+        </button>
+      </div>
+    </div>
   </div>
-</ng-template>
+</div>
 
