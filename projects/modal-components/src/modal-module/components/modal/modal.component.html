@@ -1,5 +1,5 @@
 <div *ngIf="visible" class="art-modal-dialog-wrapper" [class.diaphanous]="_settings.diaphanous">
-  <div [class]="backdropClass" *ngIf="_settings.hasBackdrop" (click)="!_settings.backdropCloser && close(false)">
+  <div [class]="backdropClass" *ngIf="_settings.hasBackdrop" (click)="_settings.backdropCloser && close(false)">
   </div>
   <div class="art-modal-dialog-content-wrapper">
     <div [class]="panelClass">
