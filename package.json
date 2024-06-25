@@ -25,7 +25,7 @@
     "angular",
     "modal"
   ],
-  "module": "dist/fesm2022/modals-components.mjs",
+  "module": "dist/fesm2022/modal-components.mjs",
   "main": "dist/esm2022/public-api.mjs",
   "types": "dist/public-api.d.ts",
   "typings": "dist/index.d.ts",
