@@ -1,5 +1,5 @@
-import {IdGenerator} from "../common/id.generator";
-import {PipeTransform} from "@angular/core";
+import { IdGenerator } from '../common/id.generator';
+import { PipeTransform } from '@angular/core';
 
 export class ModalSettings {
   /**
@@ -102,7 +102,7 @@ export class ModalSettings {
   }
 
   setTranslatePipe(translatePipe: PipeTransform | null): ModalSettings {
-    return ModalSettings.copy({...this, translatePipe});
+    return ModalSettings.copy({ ...this, translatePipe });
   }
 
   /**
@@ -112,7 +112,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated ModalSettings object.
    */
   setId(id: string): ModalSettings {
-    return ModalSettings.copy({...this, id});
+    return ModalSettings.copy({ ...this, id });
   }
 
   /**
@@ -123,7 +123,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - The updated modal settings.
    */
   setConfirmAvailable(confirmAvailable: boolean): ModalSettings {
-    return ModalSettings.copy({...this, confirmAvailable});
+    return ModalSettings.copy({ ...this, confirmAvailable });
   }
 
   /**
@@ -134,7 +134,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated modal settings object.
    */
   setPanelClass(panelClass: string): ModalSettings {
-    return ModalSettings.copy({...this, panelClass});
+    return ModalSettings.copy({ ...this, panelClass });
   }
 
   /**
@@ -144,7 +144,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - A new ModalSettings object with the updated confirmVisible value.
    */
   setConfirmVisible(confirmVisible: boolean): ModalSettings {
-    return ModalSettings.copy({...this, confirmVisible});
+    return ModalSettings.copy({ ...this, confirmVisible });
   }
 
   /**
@@ -154,7 +154,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The modified modal settings object.
    */
   setCancelVisible(cancelVisible: boolean): ModalSettings {
-    return ModalSettings.copy({...this, cancelVisible});
+    return ModalSettings.copy({ ...this, cancelVisible });
   }
 
   /**
@@ -164,7 +164,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated ModalSettings object.
    */
   setConfirmTitle(confirmTitle: string): ModalSettings {
-    return ModalSettings.copy({...this, confirmTitle});
+    return ModalSettings.copy({ ...this, confirmTitle });
   }
 
   /**
@@ -174,7 +174,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - The updated modal settings object.
    */
   setCancelTitle(cancelTitle: string): ModalSettings {
-    return ModalSettings.copy({...this, cancelTitle});
+    return ModalSettings.copy({ ...this, cancelTitle });
   }
 
   /**
@@ -184,7 +184,7 @@ export class ModalSettings {
    * @return {ModalSettings} - A new instance of ModalSettings with the updated title.
    */
   setTitle(title: string): ModalSettings {
-    return ModalSettings.copy({...this, title});
+    return ModalSettings.copy({ ...this, title });
   }
   /**
    Sets the value of `diaphanous` property in the `ModalSettings` object.
@@ -193,7 +193,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The updated modal settings object.
    */
   setDiaphanous(diaphanous: boolean): ModalSettings {
-    return ModalSettings.copy({...this, diaphanous});
+    return ModalSettings.copy({ ...this, diaphanous });
   }
   /**
    * Sets the value of `backdropCloser` property in the `ModalSettings` object.
@@ -201,7 +201,7 @@ export class ModalSettings {
    * @returns {ModalSettings} - A new ModalSettings object with the updated backdropCloser property.
    */
   setBackdropCloser(backdropCloser: boolean): ModalSettings {
-    return ModalSettings.copy({...this, backdropCloser: backdropCloser});
+    return ModalSettings.copy({ ...this, backdropCloser: backdropCloser });
   }
   /**
    * Sets the value of `hasBackdrop` property in the `ModalSettings` object.
@@ -210,7 +210,7 @@ export class ModalSettings {
    * @return {ModalSettings} - The modified `ModalSettings` object with the updated `hasBackdrop` property.
    */
   setHasBackdrop(hasBackdrop: boolean): ModalSettings {
-    return ModalSettings.copy({...this, hasBackdrop});
+    return ModalSettings.copy({ ...this, hasBackdrop });
   }
 
   /**

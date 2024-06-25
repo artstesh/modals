@@ -1,8 +1,8 @@
-import {ModalPostboyService} from './modal-postboy.service';
-import {Forger} from '@artstesh/forger';
-import {Subject} from 'rxjs';
-import {should} from '@artstesh/it-should';
-import {PostboyGenericMessage} from '@artstesh/postboy';
+import { ModalPostboyService } from './modal-postboy.service';
+import { Forger } from '@artstesh/forger';
+import { Subject } from 'rxjs';
+import { should } from '@artstesh/it-should';
+import { PostboyGenericMessage } from '@artstesh/postboy';
 
 class TestEvent extends PostboyGenericMessage {
   public static readonly ID = Forger.create<string>()!;

@@ -1,6 +1,6 @@
-import {LanguagePipe} from './language.pipe';
-import {instance, mock} from "ts-mockito";
-import {Injector} from "@angular/core";
+import { LanguagePipe } from './language.pipe';
+import { instance, mock } from 'ts-mockito';
+import { Injector } from '@angular/core';
 
 describe('LanguagePipe', () => {
   it('create an instance', () => {
