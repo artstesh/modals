@@ -56,8 +56,8 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
     this.close(false);
     this.command = cmd;
     this.visible = true;
-    this.backdropClass= this._settings.panelClass.length ? `${this._settings.panelClass}-backdrop` : '';
-    this.panelClass= this._settings.panelClass.length ? `${this._settings.panelClass}` : '';
+    this.backdropClass = this._settings.panelClass.length ? `${this._settings.panelClass}-backdrop` : '';
+    this.panelClass = this._settings.panelClass.length ? `${this._settings.panelClass}` : '';
     this.detector.detectChanges();
   }
 
