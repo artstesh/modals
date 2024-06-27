@@ -1,8 +1,8 @@
 <div *ngIf="visible" class="art-modal-dialog-wrapper {{panelClass}}" [class.diaphanous]="_settings.diaphanous">
-  <div [class]="backdropClass" *ngIf="_settings.hasBackdrop" (click)="_settings.backdropCloser && close(false)">
+  <div [class]="backdropClass" class="{{dialogPanelClass}}-backdrop" *ngIf="_settings.hasBackdrop" (click)="_settings.backdropCloser && close(false)">
   </div>
   <div class="art-modal-dialog-content-wrapper">
-    <div>
+    <div [class]="dialogPanelClass">
       <div class="art-modal-dialog-title">
         <div>{{ _settings.title }}</div>
         <div class="closer" (click)="close(false)">✖</div>

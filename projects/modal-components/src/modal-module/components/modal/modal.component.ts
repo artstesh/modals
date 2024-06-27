@@ -13,7 +13,7 @@ import { CloseModalCommand } from '../../messages/commands/close-modal.command';
   encapsulation: ViewEncapsulation.None,
 })
 export class ModalComponent extends DestructibleComponent implements OnInit {
-  DialogPanelClass = 'art-modal-dialog';
+  dialogPanelClass = 'art-modal-dialog';
   backdropClass: string = '';
   panelClass: string = '';
   visible: boolean = false;
@@ -56,12 +56,8 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
     this.close(false);
     this.command = cmd;
     this.visible = true;
-    this.backdropClass = this._settings.panelClass.length
-      ? `${this._settings.panelClass}-backdrop ${this.DialogPanelClass}-backdrop`
-      : `${this.DialogPanelClass}-backdrop`;
-    this.panelClass = this._settings.panelClass.length
-      ? `${this._settings.panelClass} ${this.DialogPanelClass}`
-      : this.DialogPanelClass;
+    this.backdropClass= this._settings.panelClass.length ? `${this._settings.panelClass}-backdrop` : '';
+    this.panelClass= this._settings.panelClass.length ? `${this._settings.panelClass}` : '';
     this.detector.detectChanges();
   }
 
