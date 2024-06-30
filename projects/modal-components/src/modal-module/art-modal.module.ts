@@ -7,9 +7,10 @@ import {ModalRootComponent} from './components/modal-root/modal-root.component';
 import { ModalBackdropComponent } from './components/modal/modal-backdrop/modal-backdrop.component';
 
 @NgModule({
-  imports: [CommonModule, LanguagePipe],
+  imports: [CommonModule],
   declarations: [
     DestructibleComponent,
+    LanguagePipe,
     ModalComponent,
     ModalRootComponent,
     ModalBackdropComponent

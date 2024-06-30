@@ -2,8 +2,8 @@
   "name": "modal-components",
   "version": "0.0.2",
   "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0",
+    "@angular/common": "^13.0.0",
+    "@angular/core": "^13.0.0",
     "@artstesh/postboy": "^1.0.8"
   },
   "dependencies": {
