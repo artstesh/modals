@@ -41,17 +41,6 @@
     pointer-events: none;
   }
 
-  .art-modal-dialog-backdrop {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    opacity: var(--am-backdrop-opacity, .6);
-    background-color: var(--am-backdrop-color, #fff);
-    height: 100%;
-    width: 100%;
-  }
-
   .art-modal-dialog-content-wrapper {
     padding: var(--am-dialog-wrapper-padding, 0);
     z-index: 10;
