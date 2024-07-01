@@ -38,7 +38,6 @@
     "url": "git+https://github.com/artstesh/modals.git"
   },
   "dependencies": {
-    "@angular/cdk": "^15.0.0",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
     "@angular/core": "^15.0.0",
