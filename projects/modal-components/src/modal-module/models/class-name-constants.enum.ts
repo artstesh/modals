@@ -6,5 +6,5 @@ export enum ClassNameConstants {
   Content = 'art-modal-dialog-content',
   Buttons = 'art-modal-dialog-buttons',
   ConfirmButton = 'confirm-button',
-  CancelButton = 'cancel-button'
+  CancelButton = 'cancel-button',
 }
