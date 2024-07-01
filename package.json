@@ -25,20 +25,18 @@
     "angular",
     "modal"
   ],
-  "module": "dist/fesm2015/modal-components.mjs",
-  "es2020": "dist/fesm2020/modal-components.mjs",
-  "esm2020": "dist/esm2020/modal-components.mjs",
-  "fesm2020": "dist/fesm2020/modal-components.mjs",
-  "fesm2015": "dist/fesm2015/modal-components.mjs",
+  "main": "dist/bundles/modal-components.umd.js",
+  "module": "dist/fesm2015/modal-components.js",
+  "es2015": "dist/fesm2015/modal-components.js",
+  "esm2015": "dist/esm2015/modal-components.js",
+  "fesm2015": "dist/fesm2015/modal-components.js",
   "typings": "dist/modal-components.d.ts",
-  "main": "dist/esm2020/public-api.mjs",
   "types": "dist/public-api.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/artstesh/modals.git"
   },
   "dependencies": {
-    "@angular/cdk": "^12.0.0",
     "@angular/common": "^12.0.0",
     "@angular/compiler": "^12.0.0",
     "@angular/core": "^12.0.0",
