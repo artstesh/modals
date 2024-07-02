@@ -7,12 +7,7 @@ import { Injector, Pipe, PipeTransform } from '@angular/core';
 export class LanguagePipe implements PipeTransform {
   public constructor(private injector: Injector) {}
 
-  transform(value: any, pipeToken: any): any {
-    if (!pipeToken) {
-      return value;
-    } else {
-      let pipe = this.injector.get(pipeToken);
-      return pipe.transform(value);
-    }
+  transform(value: any, pipe:  PipeTransform | null): any {
+    return pipe?.transform(value)??value;
   }
 }
