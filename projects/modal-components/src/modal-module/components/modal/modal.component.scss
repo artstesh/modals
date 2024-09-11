@@ -53,8 +53,10 @@
       flex-direction: column;
       width: var(--am-dialog-width, fit-content);
       max-width: var(--am-dialog-width, fit-content);
+      height: var(--am-dialog-height, unset);
       border-radius: var(--am-dialog-border-radius, 8px);
       pointer-events: all;
+      box-sizing: border-box;
 
       .art-modal-dialog-title {
         border-bottom: var(--am-dialog-title-border-bottom, 1px solid green);
