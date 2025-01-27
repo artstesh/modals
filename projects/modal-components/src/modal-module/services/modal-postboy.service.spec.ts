@@ -5,9 +5,6 @@ import { should } from '@artstesh/it-should';
 import { PostboyGenericMessage } from '@artstesh/postboy';
 
 class TestEvent extends PostboyGenericMessage {
-  public static readonly ID = Forger.create<string>()!;
-  id: string = TestEvent.ID;
-
   constructor(public value: number) {
     super();
   }
@@ -18,7 +15,7 @@ describe('ModalPostboyService', () => {
 
   beforeEach(() => {
     service = new ModalPostboyService();
-    service.register(TestEvent.ID, new Subject<TestEvent>());
+    service.record(TestEvent, new Subject<TestEvent>());
   });
 
   afterEach(() => {
@@ -28,7 +25,7 @@ describe('ModalPostboyService', () => {
   it('success', () => {
     let testEvent = new TestEvent(Forger.create<number>()!);
     let gotValue: number;
-    service.subscribe<TestEvent>(TestEvent.ID).subscribe((e) => (gotValue = e.value));
+    service.sub(TestEvent).subscribe((e) => (gotValue = e.value));
     //
     service.fire(testEvent);
     //
