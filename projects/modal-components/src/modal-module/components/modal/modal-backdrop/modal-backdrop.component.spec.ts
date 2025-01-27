@@ -1,21 +1,22 @@
-import {ComponentFixture} from '@angular/core/testing';
-import {ModalBackdropComponent} from './modal-backdrop.component';
-import {ModalPostboyService} from "../../../services/modal-postboy.service";
-import {ModalSettings} from "../../../models";
-import {MockBuilder, MockProvider, MockRender, ngMocks} from "ng-mocks";
-import {ArtModalModule} from "../../../art-modal.module";
-import {anyOfClass, instance, mock, reset, verify} from "ts-mockito";
-import {should} from "@artstesh/it-should";
-import {CloseModalCommand} from "../../../messages";
-import {Forger} from "@artstesh/forger";
+import { ComponentFixture } from '@angular/core/testing';
+import { ModalBackdropComponent } from './modal-backdrop.component';
+import { ModalPostboyService } from '../../../services/modal-postboy.service';
+import { ModalSettings } from '../../../models';
+import { MockBuilder, MockProvider, MockRender, ngMocks } from 'ng-mocks';
+import { ArtModalModule } from '../../../art-modal.module';
+import { anyOfClass, instance, mock, reset, verify } from 'ts-mockito';
+import { should } from '@artstesh/it-should';
+import { CloseModalCommand } from '../../../messages';
+import { Forger } from '@artstesh/forger';
 
 describe('ModalBackdropComponent', () => {
   let fixture: ComponentFixture<ModalBackdropComponent>;
   let postboyService = mock(ModalPostboyService);
 
   beforeEach(() => {
-    return MockBuilder(ModalBackdropComponent, ArtModalModule)
-      .provide(MockProvider(ModalPostboyService, instance(postboyService)));
+    return MockBuilder(ModalBackdropComponent, ArtModalModule).provide(
+      MockProvider(ModalPostboyService, instance(postboyService)),
+    );
   });
 
   beforeEach(() => {
@@ -36,11 +37,11 @@ describe('ModalBackdropComponent', () => {
     //
     fixture.componentInstance.settings = settings;
     //
-    should().objects(fixture.componentInstance._settings,settings).equal();
+    should().objects(fixture.componentInstance._settings, settings).equal();
   });
 
   it('should correctly update backdrop class', () => {
-    const customClass = Forger.create<string>({stringNumbers: false, stringSpecial: false})!;
+    const customClass = Forger.create<string>({ stringNumbers: false, stringSpecial: false })!;
     const expectedClass = `${customClass}-backdrop`;
     //
     fixture.componentInstance.settings = new ModalSettings().setPanelClass(customClass);
