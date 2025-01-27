@@ -47,9 +47,7 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
         .pipe(filter((cmd) => cmd.modalId === this._settings.id))
         .subscribe((cmd) => this.close(cmd.result)),
     );
-    this.subs.push(
-      this.postboy.sub(CloseAllModalsCommand).subscribe(() => this.close(false)),
-    );
+    this.subs.push(this.postboy.sub(CloseAllModalsCommand).subscribe(() => this.close(false)));
   }
 
   open(cmd: OpenModalCommand): void {
