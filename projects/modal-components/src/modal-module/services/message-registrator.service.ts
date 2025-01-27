@@ -12,8 +12,8 @@ export class MessageRegistratorService extends PostboyAbstractRegistrator {
   }
 
   protected _up(): void {
-    this.registerReplay(OpenModalCommand.ID);
-    this.registerSubject(CloseModalCommand.ID);
-    this.registerSubject(CloseAllModalsCommand.ID);
+    this.recordReplay(OpenModalCommand);
+    this.recordSubject(CloseModalCommand);
+    this.recordSubject(CloseAllModalsCommand);
   }
 }
