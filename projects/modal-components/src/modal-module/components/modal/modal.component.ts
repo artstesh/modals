@@ -34,7 +34,7 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
   ngOnInit(): void {
     this.subs.push(
       this.postboy
-        .subscribe<OpenModalCommand>(OpenModalCommand.ID)
+        .sub(OpenModalCommand)
         .pipe(
           filter((cmd) => cmd.modalId === this._settings.id),
           auditTime(100),
@@ -43,12 +43,12 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
     );
     this.subs.push(
       this.postboy
-        .subscribe<CloseModalCommand>(CloseModalCommand.ID)
+        .sub(CloseModalCommand)
         .pipe(filter((cmd) => cmd.modalId === this._settings.id))
         .subscribe((cmd) => this.close(cmd.result)),
     );
     this.subs.push(
-      this.postboy.subscribe<CloseAllModalsCommand>(CloseAllModalsCommand.ID).subscribe(() => this.close(false)),
+      this.postboy.sub(CloseAllModalsCommand).subscribe(() => this.close(false)),
     );
   }
 
