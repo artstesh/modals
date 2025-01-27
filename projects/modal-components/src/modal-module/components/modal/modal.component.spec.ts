@@ -19,9 +19,9 @@ describe('ModalComponent', () => {
     openCommand$ = new Subject<OpenModalCommand>();
     closeCommand$ = new Subject<CloseModalCommand>();
     closeAllCommand$ = new Subject<CloseAllModalsCommand>();
-    when(postboy.subscribe(OpenModalCommand.ID)).thenReturn(openCommand$);
-    when(postboy.subscribe(CloseModalCommand.ID)).thenReturn(closeCommand$);
-    when(postboy.subscribe(CloseAllModalsCommand.ID)).thenReturn(closeAllCommand$);
+    when(postboy.sub(OpenModalCommand)).thenReturn(openCommand$);
+    when(postboy.sub(CloseModalCommand)).thenReturn(closeCommand$);
+    when(postboy.sub(CloseAllModalsCommand)).thenReturn(closeAllCommand$);
     await MockBuilder(ModalComponent, ArtModalModule).provide(MockProvider(ModalPostboyService, instance(postboy)));
   });
 
