@@ -5,6 +5,7 @@ import { should } from '@artstesh/it-should';
 import { PostboyGenericMessage } from '@artstesh/postboy';
 
 class TestEvent extends PostboyGenericMessage {
+  static ID: string = 'testEvent';
   constructor(public value: number) {
     super();
   }
