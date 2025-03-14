@@ -9,6 +9,8 @@
 
       <div [class]="ClassNameConstants.Content">
         <ng-content></ng-content>
+        <ng-container *ngTemplateOutlet="contentRef">
+        </ng-container>
       </div>
 
       <div [class]="ClassNameConstants.Buttons">
