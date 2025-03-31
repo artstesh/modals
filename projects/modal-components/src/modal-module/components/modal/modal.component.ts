@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, TemplateRef} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { DestructibleComponent } from '../../common/destructible.component';
 import { ModalPostboyService } from '../../services/modal-postboy.service';
 import { ModalSettings } from '../../models';
