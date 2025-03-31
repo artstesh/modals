@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, TemplateRef} from '@angular/core';
 import { DestructibleComponent } from '../../common/destructible.component';
 import { ModalPostboyService } from '../../services/modal-postboy.service';
 import { ModalSettings } from '../../models';
@@ -14,6 +14,7 @@ import { ClassNameConstants } from '../../models/class-name-constants.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent extends DestructibleComponent implements OnInit {
+  @Input() contentRef: TemplateRef<any> | null = null;
   ClassNameConstants = ClassNameConstants;
   panelClass: string = '';
   visible: boolean = false;
@@ -47,7 +48,9 @@ export class ModalComponent extends DestructibleComponent implements OnInit {
         .pipe(filter((cmd) => cmd.modalId === this._settings.id))
         .subscribe((cmd) => this.close(cmd.result)),
     );
-    this.subs.push(this.postboy.sub(CloseAllModalsCommand).subscribe(() => this.close(false)));
+    this.subs.push(
+      this.postboy.sub(CloseAllModalsCommand).subscribe(() => this.close(false)),
+    );
   }
 
   open(cmd: OpenModalCommand): void {
