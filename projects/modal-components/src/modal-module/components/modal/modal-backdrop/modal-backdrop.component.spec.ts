@@ -3,18 +3,19 @@ import { ModalBackdropComponent } from './modal-backdrop.component';
 import { ModalPostboyService } from '../../../services/modal-postboy.service';
 import { ModalSettings } from '../../../models';
 import { MockBuilder, MockProvider, MockRender, ngMocks } from 'ng-mocks';
-import { ArtModalModule } from '../../../art-modal.module';
+
 import { anyOfClass, instance, mock, reset, verify } from 'ts-mockito';
 import { should } from '@artstesh/it-should';
 import { CloseModalCommand } from '../../../messages';
 import { Forger } from '@artstesh/forger';
+import {NgIf} from "@angular/common";
 
 describe('ModalBackdropComponent', () => {
   let fixture: ComponentFixture<ModalBackdropComponent>;
   let postboyService = mock(ModalPostboyService);
 
   beforeEach(() => {
-    return MockBuilder(ModalBackdropComponent, ArtModalModule).provide(
+    return MockBuilder(ModalBackdropComponent).keep(NgIf).provide(
       MockProvider(ModalPostboyService, instance(postboyService)),
     );
   });
@@ -33,11 +34,11 @@ describe('ModalBackdropComponent', () => {
   });
 
   it('should correctly handle new settings', () => {
-    const settings = new ModalSettings().setId(fixture.componentInstance._settings.id);
+    const settings = new ModalSettings().setId(fixture.componentInstance._settings().id);
     //
     fixture.componentInstance.settings = settings;
     //
-    should().objects(fixture.componentInstance._settings, settings).equal();
+    should().objects(fixture.componentInstance._settings(), settings).equal();
   });
 
   it('should correctly update backdrop class', () => {

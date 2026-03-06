@@ -1,23 +1,25 @@
-<div *ngIf="visible" class="art-modal-dialog-wrapper {{panelClass}}" [class.diaphanous]="_settings.diaphanous">
-  <art-modal-backdrop [settings]="_settings"></art-modal-backdrop>
+<div *ngIf="visible()" class="art-modal-dialog-wrapper {{panelClass}}" [class.diaphanous]="_settings().diaphanous">
+  <art-modal-backdrop [settings]="_settings()"></art-modal-backdrop>
   <div class="art-modal-dialog-content-wrapper">
     <div [class]="ClassNameConstants.Dialog">
       <div [class]="ClassNameConstants.DialogTitle">
-        <div>{{ _settings.title | artLanguagePipe : _settings.translatePipe }}</div>
+        <div>{{ _settings().title | artLanguagePipe : _settings().translatePipe }}</div>
         <div [class]="ClassNameConstants.Closer" (click)="close(false)">✖</div>
       </div>
 
       <div [class]="ClassNameConstants.Content">
         <ng-content></ng-content>
+        <ng-container *ngTemplateOutlet="contentRef">
+        </ng-container>
       </div>
 
       <div [class]="ClassNameConstants.Buttons">
-        <button [disabled]="!_settings.confirmAvailable" [class]="ClassNameConstants.ConfirmButton"
-                (click)="close(true)">{{ _settings.confirmTitle  | artLanguagePipe : _settings.translatePipe }}
+        <button [disabled]="!_settings().confirmAvailable" [class]="ClassNameConstants.ConfirmButton"
+                (click)="close(true)">{{ _settings().confirmTitle  | artLanguagePipe : _settings().translatePipe }}
         </button>
-        <button *ngIf="_settings.cancelVisible"
+        <button *ngIf="_settings().cancelVisible"
                 [class]="ClassNameConstants.CancelButton"
-                (click)="close(false)">{{ _settings.cancelTitle  | artLanguagePipe : _settings.translatePipe }}
+                (click)="close(false)">{{ _settings().cancelTitle  | artLanguagePipe : _settings().translatePipe }}
         </button>
       </div>
     </div>

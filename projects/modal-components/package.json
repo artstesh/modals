@@ -2,9 +2,9 @@
   "name": "modal-components",
   "version": "0.0.2",
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
-    "@artstesh/postboy": "^2.1.0"
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@artstesh/postboy": "^3.1.5"
   },
   "dependencies": {
     "tslib": "^2.3.0"

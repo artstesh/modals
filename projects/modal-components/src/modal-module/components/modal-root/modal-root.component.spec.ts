@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 import { CloseAllModalsCommand, CloseModalCommand, OpenModalCommand } from '../../messages';
 import { MockBuilder, MockProvider, MockRender } from 'ng-mocks';
 import { ModalComponent } from '../modal/modal.component';
-import { ArtModalModule } from '../../art-modal.module';
+
 import { MessageRegistratorService } from '../../services/message-registrator.service';
 import { should } from '@artstesh/it-should';
 
@@ -16,7 +16,7 @@ describe('ModalRootComponent', () => {
   const registratorService = mock(MessageRegistratorService);
 
   beforeEach(async () => {
-    await MockBuilder(ModalRootComponent, ArtModalModule).mock(MessageRegistratorService, instance(registratorService));
+    await MockBuilder(ModalRootComponent).mock(MessageRegistratorService, instance(registratorService));
   });
 
   beforeEach(() => {
