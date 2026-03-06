@@ -1,5 +1,6 @@
-<div class="{{ClassNameConstants.Dialog}}-backdrop {{backdropClass}}"
-     *ngIf="_settings.hasBackdrop"
-     (click)="_settings.backdropCloser && close()"
-     data-test="backdrop">
-</div>
+@if (_settings().hasBackdrop) {
+  <div class="{{ClassNameConstants.Dialog}}-backdrop {{backdropClass()}}"
+       (click)="_settings().backdropCloser && close()"
+       data-test="backdrop">
+  </div>
+}
