@@ -6,7 +6,7 @@ import { CloseAllModalsCommand, OpenModalCommand } from '../../messages';
 import { auditTime, filter } from 'rxjs/operators';
 import { CloseModalCommand } from '../../messages/commands/close-modal.command';
 import { ClassNameConstants } from '../../models/class-name-constants.enum';
-import {NgIf} from "@angular/common";
+import {NgIf, NgTemplateOutlet} from "@angular/common";
 import {LanguagePipe} from "../../common/language.pipe";
 import {ModalBackdropComponent} from "./modal-backdrop/modal-backdrop.component";
 
@@ -19,7 +19,8 @@ import {ModalBackdropComponent} from "./modal-backdrop/modal-backdrop.component"
   imports: [
     NgIf,
     LanguagePipe,
-    ModalBackdropComponent
+    ModalBackdropComponent,
+    NgTemplateOutlet
   ]
 })
 export class ModalComponent extends DestructibleComponent implements OnInit {
