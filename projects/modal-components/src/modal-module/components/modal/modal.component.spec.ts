@@ -7,7 +7,6 @@ import { CloseAllModalsCommand, CloseModalCommand, OpenModalCommand } from '../.
 import { instance, mock, reset, when } from 'ts-mockito';
 import { ModalPostboyService } from '../../services/modal-postboy.service';
 
-
 describe('ModalComponent', () => {
   let fixture: ComponentFixture<ModalComponent>;
   const postboy = mock(ModalPostboyService);
