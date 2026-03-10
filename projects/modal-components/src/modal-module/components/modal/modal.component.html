@@ -1,4 +1,4 @@
-<div *ngIf="visible()" class="art-modal-dialog-wrapper {{panelClass}}" [class.diaphanous]="_settings().diaphanous">
+<div *ngIf="visible()" class="art-modal-dialog-wrapper {{panelClass()}}" [class.diaphanous]="_settings().diaphanous">
   <art-modal-backdrop [settings]="_settings()"></art-modal-backdrop>
   <div class="art-modal-dialog-content-wrapper">
     <div [class]="ClassNameConstants.Dialog">
