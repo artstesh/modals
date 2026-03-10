@@ -14,9 +14,7 @@ describe('ModalBackdropComponent', () => {
   let postboyService = mock(ModalPostboyService);
 
   beforeEach(() => {
-    return MockBuilder(ModalBackdropComponent).provide(
-      MockProvider(ModalPostboyService, instance(postboyService)),
-    );
+    return MockBuilder(ModalBackdropComponent).provide(MockProvider(ModalPostboyService, instance(postboyService)));
   });
 
   beforeEach(() => {

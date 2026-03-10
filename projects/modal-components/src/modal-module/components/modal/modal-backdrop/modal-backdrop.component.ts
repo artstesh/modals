@@ -1,15 +1,15 @@
-import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
-import {ClassNameConstants} from '../../../models/class-name-constants.enum';
-import {ModalSettings} from '../../../models';
-import {CloseModalCommand} from '../../../messages';
-import {ModalPostboyService} from '../../../services/modal-postboy.service';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
+import { ClassNameConstants } from '../../../models/class-name-constants.enum';
+import { ModalSettings } from '../../../models';
+import { CloseModalCommand } from '../../../messages';
+import { ModalPostboyService } from '../../../services/modal-postboy.service';
 
 @Component({
   selector: 'art-modal-backdrop',
   templateUrl: './modal-backdrop.component.html',
   styleUrls: ['./modal-backdrop.component.scss'],
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalBackdropComponent {
   backdropClass = signal<string>('');

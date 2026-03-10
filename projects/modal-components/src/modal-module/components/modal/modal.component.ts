@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, signal, TemplateRef} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  signal,
+  TemplateRef,
+} from '@angular/core';
 import { DestructibleComponent } from '../../common/destructible.component';
 import { ModalPostboyService } from '../../services/modal-postboy.service';
 import { ModalSettings } from '../../models';
@@ -6,9 +14,9 @@ import { CloseAllModalsCommand, OpenModalCommand } from '../../messages';
 import { auditTime, filter } from 'rxjs/operators';
 import { CloseModalCommand } from '../../messages/commands/close-modal.command';
 import { ClassNameConstants } from '../../models/class-name-constants.enum';
-import {NgIf, NgTemplateOutlet} from "@angular/common";
-import {LanguagePipe} from "../../common/language.pipe";
-import {ModalBackdropComponent} from "./modal-backdrop/modal-backdrop.component";
+import { NgIf, NgTemplateOutlet } from '@angular/common';
+import { LanguagePipe } from '../../common/language.pipe';
+import { ModalBackdropComponent } from './modal-backdrop/modal-backdrop.component';
 
 @Component({
   selector: 'art-modal',
@@ -16,12 +24,7 @@ import {ModalBackdropComponent} from "./modal-backdrop/modal-backdrop.component"
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgIf,
-    LanguagePipe,
-    ModalBackdropComponent,
-    NgTemplateOutlet
-  ]
+  imports: [NgIf, LanguagePipe, ModalBackdropComponent, NgTemplateOutlet],
 })
 export class ModalComponent extends DestructibleComponent implements OnInit {
   @Input() contentRef: TemplateRef<any> | null = null;

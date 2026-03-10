@@ -6,8 +6,7 @@ import { Subject } from 'rxjs';
 import { CloseAllModalsCommand, CloseModalCommand, OpenModalCommand } from '../../messages';
 import { instance, mock, reset, when } from 'ts-mockito';
 import { ModalPostboyService } from '../../services/modal-postboy.service';
-import {NgIf} from "@angular/common";
-
+import { NgIf } from '@angular/common';
 
 describe('ModalComponent', () => {
   let fixture: ComponentFixture<ModalComponent>;
@@ -23,7 +22,9 @@ describe('ModalComponent', () => {
     when(postboy.sub(OpenModalCommand)).thenReturn(openCommand$);
     when(postboy.sub(CloseModalCommand)).thenReturn(closeCommand$);
     when(postboy.sub(CloseAllModalsCommand)).thenReturn(closeAllCommand$);
-    await MockBuilder(ModalComponent).keep(NgIf).provide(MockProvider(ModalPostboyService, instance(postboy)));
+    await MockBuilder(ModalComponent)
+      .keep(NgIf)
+      .provide(MockProvider(ModalPostboyService, instance(postboy)));
   });
 
   beforeEach(() => {
