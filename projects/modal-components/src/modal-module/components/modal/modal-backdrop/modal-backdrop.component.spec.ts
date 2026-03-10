@@ -8,16 +8,16 @@ import { anyOfClass, instance, mock, reset, verify } from 'ts-mockito';
 import { should } from '@artstesh/it-should';
 import { CloseModalCommand } from '../../../messages';
 import { Forger } from '@artstesh/forger';
-import {NgIf} from "@angular/common";
+import { NgIf } from '@angular/common';
 
 describe('ModalBackdropComponent', () => {
   let fixture: ComponentFixture<ModalBackdropComponent>;
   let postboyService = mock(ModalPostboyService);
 
   beforeEach(() => {
-    return MockBuilder(ModalBackdropComponent).keep(NgIf).provide(
-      MockProvider(ModalPostboyService, instance(postboyService)),
-    );
+    return MockBuilder(ModalBackdropComponent)
+      .keep(NgIf)
+      .provide(MockProvider(ModalPostboyService, instance(postboyService)));
   });
 
   beforeEach(() => {
