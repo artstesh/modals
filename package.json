@@ -34,11 +34,9 @@
     "url": "git+https://github.com/artstesh/modals.git"
   },
   "dependencies": {
-    "@angular/animations": "^20.0.0",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
-    "@angular/forms": "^20.0.0",
     "@artstesh/postboy": "^3.1.5",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0",
