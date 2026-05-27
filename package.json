@@ -33,16 +33,23 @@
     "type": "git",
     "url": "git+https://github.com/artstesh/modals.git"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
-    "@artstesh/postboy": "^3.1.5",
+    "@artstesh/postboy": "^3.3.1",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@artstesh/postboy": "^3.3.1",
+    "rxjs": "^7.0.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0",
     "@angular-builders/custom-webpack": "^20.0.0",
     "@angular-devkit/build-angular": "^20.0.0",
     "@angular-eslint/builder": "^20.0.0",
